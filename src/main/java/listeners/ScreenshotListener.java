@@ -1,6 +1,7 @@
 package listeners;
 
 import com.codeborne.selenide.WebDriverRunner;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestResult;
@@ -14,8 +15,8 @@ public class ScreenshotListener extends TestListenerAdapter {
         saveAllureScreenshot();
     }
 
-    @Attachment(value = "Page screenshot", type = "image/png")
-    private void saveAllureScreenshot() {
-        ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
+    @Attachment(value = "Failure Screenshot", type = "image/png")
+    private byte[] saveAllureScreenshot() {
+        return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 }
