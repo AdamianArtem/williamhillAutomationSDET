@@ -6,7 +6,7 @@ Feature: Place a bet on a English Premier League event
     Given Navigate to "http://sports.williamhill.com/betting/en-gb"
     And Log in with "WHATA_FOG3" , "F0gUaTtest" user
     And Navigate to "http://sports.williamhill.com/betting/en-gb/football"
-    And Select event for the "home" team to Win
+    And Select event for the "Home" team to Win
 
 
 
