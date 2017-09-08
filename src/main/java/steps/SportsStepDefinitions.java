@@ -35,8 +35,10 @@ public class SportsStepDefinitions {
         int i = generator.nextInt(sportsHomePage.selectFootballEventsSize());
 
         sportsHomePage.selectFootballEvents(i,1).click();
-//        switch (team) {
-//            case "":
-//        }
+
+        switch (team) {
+            case "":
+                break;
+        }
     }
 }
