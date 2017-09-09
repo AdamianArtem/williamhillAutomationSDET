@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
+import static helper.WaitHelper.waitFor;
 
 public class SportsPage extends AbstractPage{
 
@@ -67,6 +68,8 @@ public class SportsPage extends AbstractPage{
 
     public void logIn(String username, String password) {
        super.logIn(accountTabButton(),loginUsernameInput(),username,loginPasswordInput(),password,loginButton());
+        waitFor("return document.readyState === 'complete'");
+        waitFor("return jQuery.active=0");
        depositHeaderButtonLink().shouldBe(Condition.enabled);
        Assert.assertEquals(depositHeaderButtonLink().getText(), "Deposit");
     }

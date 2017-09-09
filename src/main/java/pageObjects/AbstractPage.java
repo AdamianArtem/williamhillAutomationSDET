@@ -11,7 +11,5 @@ abstract class AbstractPage {
         userNameInput.setValue(username);
         passwordInput.setValue(password);
         submitButton.click();
-        waitFor("return document.readyState === 'complete'");
-        waitFor("return jQuery.active=0");
     }
 }

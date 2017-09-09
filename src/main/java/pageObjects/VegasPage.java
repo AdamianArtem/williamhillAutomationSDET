@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
+import static helper.WaitHelper.waitFor;
 
 public class VegasPage extends AbstractPage{
 
@@ -60,6 +61,8 @@ public class VegasPage extends AbstractPage{
 
     public void logIn(String username, String password) {
         super.logIn(startLoginButton(),usernameInput(),username,passwordInput(), password,finishLoginButton());
+        waitFor("return document.readyState === 'complete'");
+        waitFor("return jQuery.active=0");
         depositButton().shouldBe(Condition.enabled);
         Assert.assertEquals(depositButton().getText(), "Deposit");
     }
