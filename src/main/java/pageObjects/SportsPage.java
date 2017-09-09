@@ -1,32 +1,27 @@
 package pageObjects;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
-import static com.codeborne.selenide.Selenide.sleep;
-import static helper.WaitHelper.waitFor;
 
 public class SportsPage extends AbstractPage{
 
-    public SelenideElement accountTabButton() {
+    private SelenideElement accountTabButton() {
         return $("#accountTabButton");
     }
 
-    public SelenideElement depositHeaderButtonLink() {
+    private SelenideElement depositHeaderButtonLink() {
         return $("#depositHeaderButtonLink");
     }
 
-    public SelenideElement loginUsernameInput() {
+    private SelenideElement loginUsernameInput() {
         return $("#loginUsernameInput");
     }
 
-    public SelenideElement loginPasswordInput() {
+    private SelenideElement loginPasswordInput() {
         return $("#loginPasswordInput");
     }
 
@@ -34,7 +29,7 @@ public class SportsPage extends AbstractPage{
         return $(".betslip-cashin__button");
     }
 
-    public SelenideElement loginButton() {
+    private SelenideElement loginButton() {
         return $(By.xpath(".//button[@data-automation-id='loginButton']"));
     }
 
@@ -54,7 +49,7 @@ public class SportsPage extends AbstractPage{
         return $(By.xpath(".//section[@data-toggle-receive='1-pre_match']")).$$("div.event").get(event).$("div.btmarket__actions").$$("div.btmarket__selection").get(btmarketActions);
     }
 
-    public SelenideElement betslipSelectionStakeInput() {
+    private SelenideElement betslipSelectionStakeInput() {
         return $(".betslip-selection__stake-input");
     }
 
@@ -72,8 +67,6 @@ public class SportsPage extends AbstractPage{
 
     public void logIn(String username, String password) {
        super.logIn(accountTabButton(),loginUsernameInput(),username,loginPasswordInput(),password,loginButton());
-        waitFor("return document.readyState === 'complete'");
-        waitFor("return jQuery.active=0");
        depositHeaderButtonLink().shouldBe(Condition.enabled);
        Assert.assertEquals(depositHeaderButtonLink().getText(), "Deposit");
     }

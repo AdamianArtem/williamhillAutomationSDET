@@ -1,11 +1,11 @@
 package steps;
 
 import cucumber.api.java.en.And;
+import io.qameta.allure.Step;
 import pageObjects.SportsPage;
 
 import java.util.Random;
 
-import static com.codeborne.selenide.Selenide.open;
 import static helper.Helper.*;
 import static helper.WaitHelper.waitFor;
 
@@ -14,6 +14,7 @@ public class SportsStepDefinitions {
     private SportsPage sportsPage = new SportsPage();
 
     @And("^Select event for the \"([^\"]*)\" team to Win$")
+    @Step("Select event")
     public void selectEventForTheTeamToWin(String team) throws Throwable {
         Random generator = new Random();
         int event = generator.nextInt(sportsPage.selectFootballEventsSize());
@@ -29,12 +30,8 @@ public class SportsStepDefinitions {
         sportsPage.selectFootballEvents(event,btmarketActionsIndex).click();
     }
 
-    @And("^Log in with user \"([^\"]*)\" and password \"([^\"]*)\"$")
-    public void logInWithUserAndPassword(String username, String password) throws Throwable {
-        sportsPage.logIn(username, password);
-    }
-
     @And("^Place \"([^\"]*)\" bet and assert the odds and returns offered$")
+    @Step("Place bet and assert the odds and returns offered")
     public void placeBetAndAssertTheOddsAndReturnsOffered(String bet) throws Throwable {
         sportsPage.placeBet(bet);
         sportsPage.placeBetButton().click();

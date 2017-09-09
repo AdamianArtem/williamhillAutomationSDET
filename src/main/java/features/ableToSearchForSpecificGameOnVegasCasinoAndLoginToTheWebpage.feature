@@ -12,3 +12,8 @@ Feature: As a WH Customer I want to be able to search for specific game on Vegas
     Then Click "Play Now" and validate Login window is displayed
 
 
+  Scenario: As a WH Customer I want to be able to login to the webpage
+
+
+    Given Navigate to "https://vegas.williamhill.com/"
+    And Log in with user "WHATA_FOG3" and password "F0gUaTtest"
