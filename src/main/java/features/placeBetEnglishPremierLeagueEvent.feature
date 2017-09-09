@@ -1,7 +1,7 @@
 @smokeTest
-Feature: Place a bet on a English Premier League event
+Feature: As a WH Customer I want the ability to place a bet on a English Premier League even
 
-  Scenario: As a WH Customer I want the ability to place a bet on a English Premier League even
+  Scenario: Ability to place a bet on a English Premier League even
 
     Given Navigate to "http://sports.williamhill.com/betting/en-gb"
     And Log in with user "WHATA_FOG3" and password "F0gUaTtest"

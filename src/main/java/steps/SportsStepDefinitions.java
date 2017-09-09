@@ -1,8 +1,7 @@
 package steps;
 
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import pageObjects.SportsHomePage;
+import pageObjects.SportsPage;
 
 import java.util.Random;
 
@@ -12,12 +11,12 @@ import static helper.WaitHelper.waitFor;
 
 public class SportsStepDefinitions {
 
-    private SportsHomePage sportsHomePage = new SportsHomePage();
+    private SportsPage sportsPage = new SportsPage();
 
     @And("^Select event for the \"([^\"]*)\" team to Win$")
     public void selectEventForTheTeamToWin(String team) throws Throwable {
         Random generator = new Random();
-        int event = generator.nextInt(sportsHomePage.selectFootballEventsSize());
+        int event = generator.nextInt(sportsPage.selectFootballEventsSize());
         int btmarketActionsIndex = 0;
         switch (team) {
             case "Draw":
@@ -27,29 +26,29 @@ public class SportsStepDefinitions {
                 btmarketActionsIndex = 2;
                 break;
         }
-        sportsHomePage.selectFootballEvents(event,btmarketActionsIndex).click();
+        sportsPage.selectFootballEvents(event,btmarketActionsIndex).click();
     }
 
     @And("^Log in with user \"([^\"]*)\" and password \"([^\"]*)\"$")
     public void logInWithUserAndPassword(String username, String password) throws Throwable {
-        sportsHomePage.logIn(username, password);
+        sportsPage.logIn(username, password);
     }
 
     @And("^Place \"([^\"]*)\" bet and assert the odds and returns offered$")
     public void placeBetAndAssertTheOddsAndReturnsOffered(String bet) throws Throwable {
-        sportsHomePage.placeBet(bet);
-        sportsHomePage.placeBetButton().click();
+        sportsPage.placeBet(bet);
+        sportsPage.placeBetButton().click();
         findSuccessMessageOnPage();
         waitFor("return jQuery.active=0");
         scrollTop();
-        sportsHomePage.openBetsTab();
+        sportsPage.openBetsTab();
         waitFor("return jQuery.active=0");
-        if (sportsHomePage.showMyBetsButton().isEnabled()) {
-            sportsHomePage.showMyBetsButton().click();
-            sportsHomePage.betslipCashinButton().click();
+        if (sportsPage.showMyBetsButton().isEnabled()) {
+            sportsPage.showMyBetsButton().click();
+            sportsPage.betslipCashinButton().click();
         } else {
-            sportsHomePage.betslipCashinButton().click();
+            sportsPage.betslipCashinButton().click();
         }
-        sportsHomePage.confirmButton().click();
+        sportsPage.confirmButton().click();
     }
 }

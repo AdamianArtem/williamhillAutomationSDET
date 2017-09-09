@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Testng Cucumber Suite">
-  <test name="Run All Tests with c">
+<suite name="Cucumber Suite">
+  <test name="Run All Cucumber tests">
     <classes>
       <class name="runners.CucumberRunner"/>
     </classes>

@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.sleep;
 import static helper.WaitHelper.waitFor;
 
-public class SportsHomePage extends AbstractPage{
+public class SportsPage extends AbstractPage{
 
     public SelenideElement accountTabButton() {
         return $("#accountTabButton");
