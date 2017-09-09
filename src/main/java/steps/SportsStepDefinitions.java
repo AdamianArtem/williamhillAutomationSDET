@@ -14,11 +14,6 @@ public class SportsStepDefinitions {
 
     private SportsHomePage sportsHomePage = new SportsHomePage();
 
-    @Given("^Navigate to \"([^\"]*)\"$")
-    public void navigateTo(String page) throws Throwable {
-        open(page);
-    }
-
     @And("^Select event for the \"([^\"]*)\" team to Win$")
     public void selectEventForTheTeamToWin(String team) throws Throwable {
         Random generator = new Random();
