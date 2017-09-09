@@ -7,6 +7,8 @@ import pageObjects.SportsHomePage;
 import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.open;
+import static helper.Helper.*;
+import static helper.WaitHelper.waitFor;
 
 public class SportsStepDefinitions {
 
@@ -15,11 +17,6 @@ public class SportsStepDefinitions {
     @Given("^Navigate to \"([^\"]*)\"$")
     public void navigateTo(String page) throws Throwable {
         open(page);
-    }
-
-    @And("^Log in with \"([^\"]*)\" , \"([^\"]*)\" user$")
-    public void logInWithUser(String username, String password) throws Throwable {
-        sportsHomePage.logIn(username, password);
     }
 
     @And("^Select event for the \"([^\"]*)\" team to Win$")
@@ -36,5 +33,28 @@ public class SportsStepDefinitions {
                 break;
         }
         sportsHomePage.selectFootballEvents(event,btmarketActionsIndex).click();
+    }
+
+    @And("^Log in with user \"([^\"]*)\" and password \"([^\"]*)\"$")
+    public void logInWithUserAndPassword(String username, String password) throws Throwable {
+        sportsHomePage.logIn(username, password);
+    }
+
+    @And("^Place \"([^\"]*)\" bet and assert the odds and returns offered$")
+    public void placeBetAndAssertTheOddsAndReturnsOffered(String bet) throws Throwable {
+        sportsHomePage.placeBet(bet);
+        sportsHomePage.placeBetButton().click();
+        findSuccessMessageOnPage();
+        waitFor("return jQuery.active=0");
+        scrollTop();
+        sportsHomePage.openBetsTab();
+        waitFor("return jQuery.active=0");
+        if (sportsHomePage.showMyBetsButton().isEnabled()) {
+            sportsHomePage.showMyBetsButton().click();
+            sportsHomePage.betslipCashinButton().click();
+        } else {
+            sportsHomePage.betslipCashinButton().click();
+        }
+        sportsHomePage.confirmButton().click();
     }
 }

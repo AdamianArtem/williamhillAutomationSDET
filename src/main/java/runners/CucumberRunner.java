@@ -31,13 +31,5 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
         ChromeDriverManager.getInstance().setup();
 		Configuration.browser = "chrome";
 		Configuration.screenshots = false;
-//		open("http://automated-testing.info/t/gde-v-otchete-allure-dolzhen-poyavitsya-skrinshot/5924");
-//        saveAllureScreenshot();
-
 	}
-
-//    @Attachment(value = "Page screenshot", type = "image/png")
-//    private byte[] saveAllureScreenshot() {
-//        return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
-//    }
 }
