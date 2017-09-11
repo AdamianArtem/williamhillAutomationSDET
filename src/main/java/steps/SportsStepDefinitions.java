@@ -17,6 +17,7 @@ public class SportsStepDefinitions {
     @Step("Select event")
     public void selectEventForTheTeamToWin(String team) throws Throwable {
         Random generator = new Random();
+        //get random nums because i want to shows you that test can select a random event from event list
         int event = generator.nextInt(sportsPage.selectFootballEventsSize());
         int btmarketActionsIndex = 0;
         switch (team) {

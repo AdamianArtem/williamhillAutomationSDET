@@ -16,10 +16,16 @@ public class Helper {
         return $$(By.xpath("//*[contains(@class, 'betslip-notification--success')]")).filter(visible);
     }
 
+    /**
+     * method which scroll to top of the page
+     */
     public static void scrollTop() {
         executeJavaScript("scroll(0,0)");
     }
 
+    /**
+     * method which wait for success message on the page
+     */
     public static void findSuccessMessageOnPage() {
         boolean success = false;
         for (int i = 0; i < 20; i++) {

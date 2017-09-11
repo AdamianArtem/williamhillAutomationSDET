@@ -46,7 +46,14 @@ public class SportsPage extends AbstractPage{
         return $(By.xpath(".//section[@data-toggle-receive='1-pre_match']")).$$("div.event").size();
     }
 
+    /**
+     *
+     * @param event enter a index of event collection
+     * @param btmarketActions enter a index (0 = "Home"), index (1 = "Draw"), index (2 = "Away")
+     * @return one of the event collection
+     */
     public SelenideElement selectFootballEvents(int event, int btmarketActions) {
+        //get collection of events and get collections of btmarket Actions
         return $(By.xpath(".//section[@data-toggle-receive='1-pre_match']")).$$("div.event").get(event).$("div.btmarket__actions").$$("div.btmarket__selection").get(btmarketActions);
     }
 
